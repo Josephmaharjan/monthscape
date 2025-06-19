@@ -1,0 +1,300 @@
+ :root {
+   --color-bg-light: #fdfcfb;
+   --color-text-light: #333;
+   --color-bg-dark: #1e1e1e;
+   --color-text-dark: #ddd;
+   --color-spent: #3498db;
+   --color-remaining: #f1c40f;
+   --color-overlay-bg: rgba(0, 0, 0, 0.7);
+ }
+
+ body {
+   margin: 0;
+   padding: 2rem;
+   font-family: "Patrick Hand", cursive;
+   background: var(--color-bg-light);
+   color: var(--color-text-light);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   transition: background-color 0.3s, color 0.3s;
+ }
+
+ body.dark {
+   background: var(--color-bg-dark);
+   color: var(--color-text-dark);
+ }
+
+ h1 {
+   font-size: 2rem;
+   margin-bottom: 1rem;
+ }
+
+ .legend {
+   display: flex;
+   gap: 1rem;
+   padding: 0.5rem 1rem;
+   font-size: 0.9rem;
+   align-items: center;
+   justify-content: center;
+   background: #fff;
+   margin-bottom: 2rem;
+   border-radius: 8px;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s, color 0.3s;
+ }
+
+ body.dark .legend {
+   background: #2c2c2c;
+   color: var(--color-text-dark);
+   box-shadow: none;
+ }
+
+ .color-box {
+   width: 16px;
+   height: 16px;
+   display: inline-block;
+   margin-right: 5px;
+   border-radius: 3px;
+ }
+
+ .spent {
+   background-color: var(--color-spent);
+ }
+
+ .remaining {
+   background-color: var(--color-remaining);
+ }
+
+ .grid {
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+   width: 100%;
+   max-width: 1000px;
+   flex-wrap: wrap;
+ }
+
+ .month-column {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 60px;
+   position: relative;
+   cursor: pointer;
+   user-select: none;
+ }
+
+ .month-label {
+   margin-top: 0.5rem;
+   font-size: 0.95rem;
+   text-align: center;
+ }
+
+ .progress-wrapper {
+   position: relative;
+   height: 200px;
+   width: 100%;
+   background-color: #fff;
+   border-radius: 10px;
+   overflow: hidden;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s, color 0.3s;
+ }
+
+ body.dark .progress-wrapper {
+   background-color: #2c2c2c;
+   box-shadow: none;
+ }
+
+ .progress-spent,
+ .progress-remaining {
+   position: absolute;
+   left: 0;
+   width: 100%;
+ }
+
+ .progress-spent {
+   top: 0;
+   background-color: var(--color-spent);
+ }
+
+ .progress-remaining {
+   bottom: 0;
+   background-color: var(--color-remaining);
+ }
+
+ .annotation-container {
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 2;
+   height: 100%;
+   width: 100%;
+   pointer-events: none;
+ }
+
+ .annotation-fill {
+   height: 100%;
+   width: 100%;
+ }
+
+ .tooltip {
+   position: absolute;
+   bottom: 240px;
+   background: rgba(0, 0, 0, 0.8);
+   color: #fff;
+   padding: 6px 10px;
+   border-radius: 6px;
+   font-size: 0.8rem;
+   white-space: nowrap;
+   opacity: 0;
+   pointer-events: none;
+   transition: opacity 0.3s;
+   user-select: none;
+   left: 50%;
+   transform: translateX(-50%);
+ }
+
+ .month-column:hover .tooltip {
+   opacity: 1;
+ }
+
+ .quote {
+   margin-top: 3rem;
+   font-size: 1.2rem;
+   font-style: italic;
+   text-align: center;
+   color: #2c3e50;
+   max-width: 600px;
+   background: #ffffff;
+   border-radius: 10px;
+   padding: 1rem 2rem;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s, color 0.3s;
+ }
+
+ body.dark .quote {
+   background: #2c2c2c;
+   color: var(--color-text-dark);
+   box-shadow: none;
+ }
+
+ /* Dark mode toggle button */
+ #darkModeToggle {
+   position: fixed;
+   top: 1rem;
+   right: 1rem;
+   background: var(--color-spent);
+   border: none;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   cursor: pointer;
+   font-size: 1.5rem;
+   color: white;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+   transition: background-color 0.3s;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   user-select: none;
+ }
+
+ #darkModeToggle:hover {
+   background: #2a80b9;
+ }
+
+ /* Download Button */
+ #downloadBtn {
+   margin-top: 1.5rem;
+   padding: 0.6rem 1.2rem;
+   font-size: 1rem;
+   background-color: var(--color-remaining);
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   user-select: none;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+   transition: background-color 0.3s;
+ }
+
+ #downloadBtn:hover {
+   background-color: #d4ac0d;
+ }
+
+ /* Modal styles */
+ #modalOverlay {
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: var(--color-overlay-bg);
+   z-index: 1000;
+   align-items: center;
+   justify-content: center;
+ }
+
+ #modalOverlay.active {
+   display: flex;
+ }
+
+ #modalContent {
+   background: #fff;
+   border-radius: 12px;
+   max-width: 400px;
+   width: 90%;
+   padding: 1.5rem;
+   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+   font-family: "Patrick Hand", cursive;
+   position: relative;
+ }
+
+ body.dark #modalContent {
+   background: #333;
+   color: var(--color-text-dark);
+ }
+
+ #modalContent h2 {
+   margin-top: 0;
+ }
+
+ #modalContent textarea {
+   width: 100%;
+   min-height: 120px;
+   font-family: "Patrick Hand", cursive;
+   font-size: 1rem;
+   padding: 0.5rem;
+   border-radius: 8px;
+   border: 1px solid #ccc;
+   resize: vertical;
+   margin-top: 1rem;
+ }
+
+ body.dark #modalContent textarea {
+   background: #555;
+   border-color: #777;
+   color: var(--color-text-dark);
+ }
+
+ #modalContent button.close-btn {
+   position: absolute;
+   top: 0.5rem;
+   right: 0.5rem;
+   background: transparent;
+   border: none;
+   font-size: 1.5rem;
+   cursor: pointer;
+   color: #888;
+   transition: color 0.2s;
+ }
+
+ #modalContent button.close-btn:hover {
+   color: #333;
+ }
+
+ body.dark #modalContent button.close-btn:hover {
+   color: #ddd;
+ }

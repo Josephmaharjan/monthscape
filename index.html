@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Month Progress - 2025</title>
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>📅 Month Progress - 2025</h1>
+
+    <!-- Dark Mode Toggle -->
+    <button
+      id="darkModeToggle"
+      aria-label="Toggle dark mode"
+      title="Toggle Dark Mode"
+    >
+      🌙
+    </button>
+
+    <!-- Legend -->
+    <div class="legend" id="legendBox">
+      <div><span class="color-box spent"></span>Spent</div>
+      <div><span class="color-box remaining"></span>Remaining</div>
+    </div>
+
+    <!-- Month Grid -->
+    <div class="grid" id="monthGrid"></div>
+
+    <!-- Motivational Quote -->
+    <div class="quote" id="quoteOfTheDay">Loading quote...</div>
+
+    <!-- Download Button -->
+    <button id="downloadBtn" title="Download progress as image">
+      Download PNG 📥
+    </button>
+
+    <!-- Modal for month journal -->
+    <div
+      id="modalOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div id="modalContent">
+        <button class="close-btn" aria-label="Close modal">&times;</button>
+        <h2 id="modalTitle">Month Details</h2>
+        <p id="modalSubtitle"></p>
+        <textarea
+          id="monthJournal"
+          placeholder="Write your notes or reflections here..."
+        ></textarea>
+        <button
+          id="saveJournalBtn"
+          style="
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+            border: none;
+            background: #3498db;
+            color: #fff;
+            font-family: 'Patrick Hand', cursive;
+          "
+        >
+          Save
+        </button>
+      </div>
+    </div>
+    
+    <!-- JS  -->
+    <script src="main.js"></script>
+  </body>
+</html>
