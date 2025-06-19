@@ -5,7 +5,7 @@
 
 **Monthscape** is a minimal, aesthetic web app that visually tracks your monthly progress throughout the year. It combines progress visualization, motivational quotes, and personal journaling — all in one place.
 
-![Monthscape Screenshot](screenshot.png) <!-- Add your screenshot here -->
+![Monthscape Screenshot](/img/month_progress_2025(11).png)![Monthscape Screenshot](/img/month_progress_2025(12).png)![Monthscape Screenshot](/img/month_progress_2025(13).png) <!-- Add your screenshot here -->
 
 ---
 
@@ -47,4 +47,4 @@
    cd monthscape
    ```
 2. **Open index.html in your favorite browser**
-   ```No build tools or servers required — just open and enjoy!```
+   No build tools or servers required — just open and enjoy!
